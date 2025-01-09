@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import { io } from 'socket.io-client';
 import 'react-quill/dist/quill.snow.css';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import { useAuth } from './AuthContext';
 
 const socket = io('http://localhost:3005');
 
 const App = () => {
   const [content, setContent] = useState('');
   const [id] = useState('note1'); // Static ID for simplicity
+  const { user } = useAuth();
 
   const handleChange = (value: string) => {
     setContent(value);
@@ -26,9 +30,14 @@ const App = () => {
     };
   }, [id]);
 
+  if (!user) {
+    return <Login />;
+  }
+
   return (
     <div style={{ padding: 20 }}>
       <h1>Collaborative Note Taking</h1>
+      <Logout />
       <ReactQuill value={content} onChange={handleChange} />
     </div>
   );

@@ -3,6 +3,7 @@ import { Server as HttpServer } from 'http';
 import { Server as HttpsServer } from 'https';
 
 const notes: { [id: string]: string } = {};
+const users: { [socketId: string]: string } = {};
 
 const startSocketServer = (httpServer: HttpServer | HttpsServer) => {
   const io: SocketServer = new SocketServer(httpServer, {
@@ -17,8 +18,14 @@ const startSocketServer = (httpServer: HttpServer | HttpsServer) => {
       notes[id] = content; // Save updated note to in-memory store
       socket.broadcast.emit('noteUpdated', { id, content }); // Notify other clients
     });
+
+    socket.on('login', (username) => {
+      users[socket.id] = username;
+    });
+
     socket.on('disconnect', () => {
       console.log('Socket disconnected: ' + socket.id);
+      delete users[socket.id];
     });
   };
 
