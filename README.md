@@ -1,79 +1,115 @@
-# Instructions
+# Collaborative Note-Taking Application
 
-**_Objective:_**
-Build a simplified real-time collaborative note-taking application that allows multiple users to edit a note simultaneously with live updates.
+## Project Overview
 
-**_Expect development time:_** 2 hours
+A real-time collaborative note-taking application that enables multiple users to simultaneously edit and format text with live updates. The application features a WYSIWYG editor, real-time synchronization through WebSockets, and basic user authentication.
 
-**Project Description:**
+## Technology Stack
 
-Create a web application where users can:
+- **Frontend**:
 
-- Create an Edit Notes:
+  - React with TypeScript
+  - QuillJS for WYSIWYG editing
+  - Socket.io-client for real-time communication
+  - React Context for state management
 
-  - Utilize a WYSIWYG editor to format text (e.g., bold, italic, underline).
+- **Backend**:
+  - Node.js with Express
+  - Socket.io for WebSocket server
+  - In-memory data store
 
-  - Implement live preview of the formatted text.
+## Features Implemented
 
-- Real-Time Collaboration
+- Real-time collaborative text editing
+- Rich text formatting (bold, italic, underline, etc.)
+- Basic user authentication
+- Live preview of formatted text
+- Connection status monitoring with reconnection capability
+- Multi-user synchronization
+- Persistent user sessions
 
-  - Use WebSockets to handle live updates and data synchronization.
+## Setup Instructions
 
-- Basic Backend Integration:
+1. Clone the repository:
 
-  - Implement basic user authentication to manage different user sessions.
+```bash
+git clone https://github.com/H-Khan-14/proposify-takehome.git
+```
 
-**Technical Requirements:**
+2. Install backend dependencies:
 
-- Frontend:
+```bash
+npm install
+```
 
-  - Framework: React with TypeScript
+3. Install frontend dependencies:
 
-  - Suggested WYSIWYG Editor packages
+```bash
+cd src/client
+npm install
+```
 
-    - CKEditor5
-    - Froala
-    - TipTap
-    - QuillJS
-    - or your own choice.
+4. Start the development servers:
 
-  - State management other than local states
+Backend (from root directory):
 
-  - Real-Time Updates: Integrate WebSocket
-  - Bonus: Create a modal to appear when the WebSocket connection is disconnected.
+```bash
+npm run dev
+```
 
-- Backend:
+Frontend (from src/client directory):
 
-  - Language: Node.js with Express or PHP (based on your stack)
+```bash
+npm run dev
+```
 
-  - Real-Time Communication: Set up WebSocket server to broadcast updates to connected clients
+The application will be available at:
 
-- Database:
+- Frontend: http://localhost:5173
+- Backend: http://localhost:3005
 
-  - Use an in-memory data store (like a simple JavaScript object) for simplicity, given the time constraint.
+## Usage
 
-**Submission Guidelines:**
+1. Open multiple tabs or browsers and navigate to http://localhost:5173 on each one.
+2. Log in with basic user credentials to access the editor.
+3. As you make changes in the WYSIWYG editor in one tab, the updates will appear live in all other open tabs.
+4. The app uses WebSocket connections to synchronize data in real-time.
 
-- Repository:
+## Screenshots
 
-  - Create a public GitHub repository containing your code.
+Collaborative Note-Taking in Action
+![Collaborative Note-Taking](./src/screenshots/note-taking-screenshot.png)
 
-  - Ensure clear commit messages and a logical commit history.
+Disconnect Modal
+![Disconnect Modal](./src/screenshots/note-modal-screenshot.png)
 
-- README File:
+## Future Improvements
 
-  - Project Overview: Brief description of the project.
+1. **Enhanced Authentication**
 
-  - Setup Instructions: Step-by-step guide to run the application locally.
+   - Implement proper user authentication with JWT
+   - Add user roles and permissions
+   - Ex. Leverage Firebase authentication or AWS cognito
 
-  - Technology Stack: List the technologies and libraries used.
+2. **Data Persistence**
 
-  - Features Implemented: Highlight the key features you’ve built.
+   - Integrate a proper database (MongoDB/PostgreSQL)
+   - Leverage ORM such as Sequelize
+   - Add document history and versioning
 
-  - Future Improvements: Mention any additional features or improvements you would implement given more time.
+3. **Enhanced Collaboration Features**
 
-- Running the Project:
+   - User cursors and presence indicators
+   - Comments and annotations
+   - Document sharing controls
 
-  - Provide clear instructions to install dependencies and start both frontend and backend servers.
+4. **Performance Optimizations**
 
-  - Ensure that the application runs without issues.
+   - Add conflict resolution
+   - Optimize WebSocket payload size
+
+5. **UI/UX Improvements**
+   - Add loading states
+   - Implement error boundaries
+   - Add CSS to create a sleek modern design
+   - Ex. Use framework such as Material UI or Tailwind CSS
