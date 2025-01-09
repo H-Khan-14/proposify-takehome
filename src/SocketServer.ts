@@ -14,9 +14,10 @@ const startSocketServer = (httpServer: HttpServer | HttpsServer) => {
     // Socket connection started
     console.log('Connection started with socket id: ' + socket.id);
 
-    socket.on('updateNote', ({ id, content }) => {
+    socket.on('updateNote', ({ id, content, socketId }) => {
       notes[id] = content; // Save updated note to in-memory store
-      socket.broadcast.emit('noteUpdated', { id, content }); // Notify other clients
+      // Broadcast to all clients including sender, but with sender's socketId
+      io.emit('noteUpdated', { id, content, socketId });
     });
 
     socket.on('login', (username) => {
