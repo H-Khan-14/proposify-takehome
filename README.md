@@ -1,20 +1,9 @@
-# Structure
-
-- We are setting the barebones for the socket server for you and the structure looks like this:
-
-  - **index.ts** is what initialize the project; It contains the instantiation of the http server as well as the call for the socket server instantiation;
-  - **SocketServer.ts** is what instantiate the socket server and set one listener for whenever a connection starts; We are setting it up using socket.io(https://socket.io/docs/v4/);
-  - **tests** you can keep your tests in here;
-  - **src** you can keep your source code files in here.
----
-**Feel free to change whatever you see fit** in the project, the structure and the way the code were written are not set on stone and were just added to help lead you straight on solving the challenge.
-
 # Instructions
 
-***Objective:***
+**_Objective:_**
 Build a simplified real-time collaborative note-taking application that allows multiple users to edit a note simultaneously with live updates.
 
-***Expect development time:***  2 hours
+**_Expect development time:_** 2 hours
 
 **Project Description:**
 
@@ -35,11 +24,13 @@ Create a web application where users can:
   - Implement basic user authentication to manage different user sessions.
 
 **Technical Requirements:**
+
 - Frontend:
 
   - Framework: React with TypeScript
 
-  - Suggested WYSIWYG Editor packages 
+  - Suggested WYSIWYG Editor packages
+
     - CKEditor5
     - Froala
     - TipTap
@@ -49,7 +40,6 @@ Create a web application where users can:
   - State management other than local states
 
   - Real-Time Updates: Integrate WebSocket
-    
   - Bonus: Create a modal to appear when the WebSocket connection is disconnected.
 
 - Backend:
@@ -63,6 +53,7 @@ Create a web application where users can:
   - Use an in-memory data store (like a simple JavaScript object) for simplicity, given the time constraint.
 
 **Submission Guidelines:**
+
 - Repository:
 
   - Create a public GitHub repository containing your code.
